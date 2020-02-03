@@ -1,6 +1,7 @@
 
 public class LightBulbFinder {
 	protected boolean lightbulbs[];
+	int numThreads = 1;
 	
 	public LightBulbFinder(boolean lightbulbs[])
 	{
@@ -12,7 +13,11 @@ public class LightBulbFinder {
 	{
 		if (start == end)
 		{
-			System.out.println("Bulb #: "+start+1+" is defective");
+			if (lightbulbs[start] == false)
+			{
+				int num = start +1;
+				System.out.println("Bulb #: "+num+" is defective");
+			}
 			return;
 		}
 		
@@ -24,14 +29,41 @@ public class LightBulbFinder {
 			}
 		}
 		
+		int pivot = (end + start)/2;
 		
-		else
+		Thread leftThread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				numThreads++;
+				FindDefective(start,pivot);
+			}
+		});
+		
+		Thread rightThread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				numThreads++;
+				FindDefective(pivot+1,end);
+			}
+		});
+		
+		leftThread.start();
+		rightThread.start();
+		try
 		{
-			int pivot = (end - start)/2;
-			FindDefective(start,pivot);
-			FindDefective(pivot+1,end);
+			leftThread.join();
+			rightThread.join();
 		}
-		
+		catch (Exception e)
+		{
+			System.out.println("THREADING EXCEPTION");
+		}
 	}
-
+	
+	public void printNumThreads()
+	{
+		System.out.println("Number of Threads: "+numThreads);
+	}
 }
