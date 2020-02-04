@@ -5,8 +5,12 @@ public class Driver {
 		// TODO Auto-generated method stub
 		System.out.println("Hello World");
 
+		FileHelper fileHelper = new FileHelper("C:\\Users\\domen\\Documents\\Concordia\\Winter 2020\\COEN_346\\Code\\COEN346_A1\\COEN346_A1\\src\\Input.txt");
+		fileHelper.FillLightbulbArray();
+		boolean lightbulbs[] = fileHelper.getLightbulbArray();
 		
-		boolean lightbulbs[] = new boolean[8];
+		//boolean lightbulbs[] = new boolean[8];
+		/*
 		lightbulbs[0] = true;
 		lightbulbs[1] = true;
 		lightbulbs[2] = false;
@@ -15,7 +19,7 @@ public class Driver {
 		lightbulbs[5] = false;
 		lightbulbs[6] = true;
 		lightbulbs[7] = true;
-	
+		*/
 		
 		LightBulbFinder lightBulbFinder = new LightBulbFinder(lightbulbs);
 		//lightBulbFinder.FindDefective(0, 7);
@@ -38,7 +42,8 @@ public class Driver {
 		
 		catch(Exception e)
 		{
-			System.out.println("EXCEPTION");
+			System.out.println("THREADING EXCEPTION");
 		}
+		
 	}
 }
