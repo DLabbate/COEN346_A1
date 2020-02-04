@@ -7,14 +7,14 @@ public class Driver {
 
 		
 		boolean lightbulbs[] = new boolean[8];
-		lightbulbs[0] = false;
+		lightbulbs[0] = true;
 		lightbulbs[1] = true;
 		lightbulbs[2] = false;
 		lightbulbs[3] = true;
 		lightbulbs[4] = true;
 		lightbulbs[5] = false;
 		lightbulbs[6] = true;
-		lightbulbs[7] = false;
+		lightbulbs[7] = true;
 	
 		
 		LightBulbFinder lightBulbFinder = new LightBulbFinder(lightbulbs);
@@ -26,7 +26,6 @@ public class Driver {
 			@Override
 			public void run() {
 				lightBulbFinder.FindDefective(0, 7);
-				lightBulbFinder.printNumThreads();
 			}
 		});
 		mainThread.start();
@@ -34,6 +33,7 @@ public class Driver {
 		try
 		{
 			mainThread.join();
+			lightBulbFinder.printNumThreads();
 		}
 		
 		catch(Exception e)
