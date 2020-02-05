@@ -5,7 +5,6 @@ public class LightBulbFinder {
 	
 	public LightBulbFinder(boolean lightbulbs[])							//Constructor, initializes array of lightbulbs
 	{
-		//System.out.println("hello");
 		this.lightbulbs = lightbulbs;
 	}
 	

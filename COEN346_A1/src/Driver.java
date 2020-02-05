@@ -1,3 +1,8 @@
+//COEN 346 - ASSIGNMENT 1
+//Written by:
+//Domenic Labbate (40063296)
+//Gianluca Lepore(40064389)
+
 
 public class Driver {
 
